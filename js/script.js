@@ -1,59 +1,72 @@
 $(document).ready(function () {
-    // Obtener productos y mostrarlos en la página
-    $.ajax({
-        url: 'controller/products.php',
-        type: 'GET',
-        dataType: 'json',
-        success: function (data) {
-            mostrarProductos(data);
-        }
-    });
+  sessionStorage.setItem("car", "[]");
+  // Obtener productos y mostrarlos en la página
+  $.ajax({
+    url: "controller/products.php",
+    type: "GET",
+    dataType: "json",
+    success: function (data) {
+      mostrarProductos(data);
+    },
+  });
 
-    function mostrarProductos(productos) {
-        console.log(productos)
-        var listaProductos = $('#productos');
-        listaProductos.empty();
+  const mostrarProductos = (productos) => {
+    console.log(productos);
+    var listaProductos = $("#productos");
+    listaProductos.empty();
 
-        $.each(productos, function (index, producto) {
-            listaProductos.append(`
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title">${producto.name}</h5>
-                        <p class="card-text">Precio: $${producto.price}</p>
-                        <button class="btn btn-primary agregar-carrito" data-id="${producto.id}" data-nombre="${producto.name}" data-precio="${producto.price}">Agregar al Carrito</button>
+    $.each(productos, function (index, producto) {
+      listaProductos.append(`
+                <div class="col-md-4">
+                    <div class="content_product agregar-carrito" data='${JSON.stringify(
+                      producto
+                    )}'>
+                        <center>
+                            <img src="images/${producto.image}">
+                            <h5 class="card-title">${producto.name}</h5>
+                            <p class="card-text">Precio: $${producto.price}</p>
+                            <button class="btn btn-primary " >Agregar al Carrito</button>
+                        </center>
                     </div>
                 </div>
             `);
-        });
-
-        // Manejar clic en "Agregar al Carrito"
-        $('.agregar-carrito').click(function () {
-            var id = $(this).data('id');
-            var nombre = $(this).data('nombre');
-            var precio = $(this).data('precio');
-            agregarAlCarrito(id, nombre, precio);
-        });
-    }
-
-    // Función para agregar productos al carrito
-    function agregarAlCarrito(id, nombre, precio) {
-        var carrito = $('#carrito');
-        carrito.append(`
-            <li class="list-group-item">
-                ${nombre} - $${precio}
-                <button class="btn btn-danger btn-sm float-right quitar-carrito" data-id="${id}">Quitar</button>
-            </li>
-        `);
-
-        // Manejar clic en "Quitar"
-        $('.quitar-carrito').click(function () {
-            var id = $(this).data('id');
-            $(this).parent().remove();
-        });
-    }
+    });
+  };
 });
 
+$(document).on("click", ".agregar-carrito", function () {
+  var data = JSON.parse($(this).attr("data"));
+  console.log(data);
 
-const new_product = ()=>{
-    $('#modal_add_product').modal('show')
-}
+  var carrito = $("#carrito");
+  carrito.append(`
+        <li class="list-group-item">
+            ${data.name} - $${data.price}
+            <button class="btn btn-danger btn-sm float-right quitar-carrito" data-id="${data.id}">Quitar</button>
+        </li>
+          `);
+
+  var car = JSON.parse(sessionStorage.getItem("car"));
+
+  car.push(data);
+
+  sessionStorage.setItem("car", JSON.stringify(car));
+  console.log(car);
+
+  Swal.fire({
+    position: "top-end",
+    icon: "success",
+    title: "Producto agregado correctamente",
+    showConfirmButton: false,
+    timer: 1500,
+  });
+
+  $(".quitar-carrito").click(function () {
+    var id = $(this).data("id");
+    $(this).parent().remove();
+  });
+});
+
+const new_product = () => {
+  $("#modal_add_product").modal("show");
+};

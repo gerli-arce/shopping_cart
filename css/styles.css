@@ -1,0 +1,26 @@
+.title{
+    background-color: rgba(95, 114, 160, 0.538);
+    height: 85px;
+    padding: 20px;
+}
+
+.content_product{
+    border: 2px solid #23334966;
+    background-color: #293d5314;
+    padding: 18px;
+    border-radius: 8px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.content_product:hover{
+    border: 2px solid #23334966;
+    background-color: rgba(38, 65, 97, 0.259);
+    box-shadow: -5px 5px 8px rgba(30, 36, 70, 0.623);
+    margin: 8px;
+    margin-top: -1px;
+}
+
+.content_product img{
+    width: 30%;
+}
