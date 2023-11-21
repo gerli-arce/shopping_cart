@@ -17,12 +17,12 @@
     border: 2px solid #23334966;
     background-color: rgba(38, 65, 97, 0.259);
     box-shadow: -5px 5px 8px rgba(30, 36, 70, 0.623);
-    margin: 8px;
-    margin-top: -1px;
+    /* margin: 8px;
+    margin-top: -1px; */
 }
 
 .content_product img{
-    width: 30%;
+    width: 36%;
 }
 
 .table_porducts {
