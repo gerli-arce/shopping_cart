@@ -24,3 +24,21 @@
 .content_product img{
     width: 30%;
 }
+
+.table_porducts {
+    border-collapse: collapse;
+    margin: 12px;
+    width: 97%;
+}
+
+.table_porducts tbody tr td {
+    border-right: 2px solid #62697e52;
+    border-bottom: 2px solid #62697e52;
+    padding: 10px;
+    /* font-size: 11px; */
+}
+
+.img_cot {
+    border: 2px solid #62697e52;
+    width: 42%;
+}

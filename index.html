@@ -26,8 +26,8 @@
   </div>
   <div class="container mt-5">
     <div class="float-end">
-      <button type="button" class="btn btn-success float-end" onclick="new_product()">
-        Agregar Producto
+      <button type="button" class="btn btn-success float-end" onclick="vierw_car()">
+        Ver carrito
       </button>
     </div>
     <h2>Productos</h2>
@@ -36,37 +36,27 @@
     <ul id="carrito" class="list-group"></ul>
   </div>
 
-  <div class="modal fade" id="modal_add_product" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+  <div class="modal fade" id="modal_view_car" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Productos en carrito</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form id="form_add_product" class="row">
-            <div class="col-md-6">
-              <label for="name" class="form-label">Nombre</label>
-              <input type="text" id="name" class="form-control" />
-            </div>
-            <div class="col-md-6">
-              <label for="price" class="form-label">Precio</label>
-              <input type="number" id="price" class="form-control" step="0.01" />
-            </div>
-            <div class="col-md-6">
-              <label for="img" class="form-label">Imagen</label>
-              <input class="form-control" type="file" id="img" />
-            </div>
-            <div class="col-md-5">
-              <label for="description" class="form-label">Descripción</label>
-              <input type="text" id="description" class="form-control" />
-            </div>
+         <center>
+          <h4>Productos</h4>
+          <hr>
+         </center>
+         <div class="row" >
 
-            <button type="button" class="btn btn-primary" id="guardarProducto">
-              Guardar cambios
-            </button>
+          <table class="table_porducts">
+            <tbody id="view_products_car">
 
-          </form>
+            </tbody>
+          </table>
+
+         </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">

@@ -67,6 +67,43 @@ $(document).on("click", ".agregar-carrito", function () {
   });
 });
 
-const new_product = () => {
-  $("#modal_add_product").modal("show");
+const vierw_car = () => {
+  $("#modal_view_car").modal("show");
+  $('#view_products_car').html(null)
+  var data = JSON.parse(sessionStorage.getItem('car'))
+  console.log(data)
+  $.each(data, function (i,product) {
+    $('#view_products_car').append(`
+        <tr>
+            <td>
+                <center>
+                    <img src="images/${product.image}" class="img_cot">
+                </center>
+            </td>
+            <td>
+                ${product.name}
+            </td>
+            <td>
+                <center>
+                   S/${product.price}
+                </center>
+            </td>
+            <td>
+                <center>
+                    <input type="number" value="1" style="width: 35%;">
+                </center>
+            </td>
+            <td>
+                <button class="btn btn-danger" >Eliminar</button>
+            </td>
+            <td>
+                <center>
+                   <p> S/<span>${product.price}</span>
+                </center>
+            </td>
+        </tr>
+    
+    `)
+    console.log(product) 
+  });
 };
