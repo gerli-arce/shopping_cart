@@ -139,6 +139,13 @@ const vierw_car = () => {
     $("#" + rowId).remove();
     var removedProduct = data.splice(productIndex, 1)[0];
     sessionStorage.setItem("car", JSON.stringify(data));
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "Producto eliminado correctamente",
+      showConfirmButton: false,
+      timer: 500,
+    });
     updateTotalPrice();
   });
 
