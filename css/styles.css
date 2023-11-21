@@ -27,6 +27,9 @@
 
 .content_product img{
     width: 36%;
+    border: 2px solid #fff;
+    padding: 5px;
+    border-radius: 8px;
 }
 
 .table_porducts {
